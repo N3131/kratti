@@ -1,0 +1,259 @@
+$maincolor: #ADDD60;
+$offwhite: #F9FFF1;
+$darkgreen: #52BF04;
+$lightgreen: #CBF291;
+
+$box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+$button-box-shadow: 0px 4px 0px rgba(0,0,0,0.25);
+$input-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+$hovergrey: rgb(207, 207, 207);
+$activegrey: rgb(179, 179, 179);
+$hovergreen: #4cb105;
+$activegreen: #439b04;
+$bRadiusSmall: 5px;
+$bRadiusBig: 10px;
+
+$buttonTransition: background-color 0.5s ease;
+@mixin loginButton {
+    width: 10em;
+    padding: 0.5em;
+    border: none;
+    border-radius: $bRadiusSmall;
+    box-shadow: $button-box-shadow;
+    text-align: center;
+    transition: $buttonTransition;
+    margin: 1em 0 0 1em;
+}
+@mixin greenButtonHover {
+    background-color: $hovergreen;
+}
+@mixin greenButtonActive {
+    background-color: $activegreen;
+    transition: none;
+}
+
+.login_section {
+    margin: 60% auto;
+    height: 90%;
+    width: 90%;
+}
+
+.login_section h2 {
+    margin-bottom: 0.5em;
+}
+.login_form .login_button_white {
+    float: right;
+}
+.login_flex_container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    box-shadow: $box-shadow;
+    border-radius: $bRadiusBig;
+    background-color: $maincolor;
+    padding: 2em;
+}
+
+.login_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.login_form .login_button_white {
+    @include loginButton;
+    margin: 1.5em 0 1.5em auto;
+    background-color: $offwhite;
+    float: right;
+}
+.login_button_white {
+    @include loginButton;
+    margin: 0 0 2em 0;
+    background-color: $offwhite;
+}
+.login_button_white:hover {
+    background-color: $hovergrey;
+}
+.login_button_white:active {
+    background-color: $activegrey;
+    transition: none;
+}
+
+.login_button {
+    @include loginButton;
+    background-color: $darkgreen;
+    float: right;
+}
+.login_button:hover {
+    @include greenButtonHover;
+}
+.login_button:active {
+    @include greenButtonActive;
+}
+
+.login_form .login_button {
+    margin-top: 1.9em;
+}
+
+.login_form input {
+    border: none;
+    margin: 0.5em 0;
+}
+
+.login_form label {
+    margin: 0.7em 0 0;
+}
+
+.invalid-feedback {
+    margin-top: 0;
+}
+
+.login_div {
+    margin-top: 1.5em;
+}
+
+.login_div p {
+    display: inline-block;
+}
+
+.register-check {
+    display: flex;
+}
+.register-check label {
+    // padding: 0.3rem;
+    margin: 0.5rem 0.3rem;
+}
+.login_form .form-check {
+    padding-left: 0;
+}
+
+@media only screen and (min-width: 330px) {
+    .login_section {
+         margin: 50% auto 0;
+    }
+}
+
+@media only screen and (min-width: 575px) {
+    .login_section {
+         margin: 30% auto 0;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .login_section {
+         margin: 15% auto 0;
+         width: 65%;
+    }
+    .login_form {
+        width: 100%;
+        margin-left: 0; }
+    .login_form input {
+        max-width: 80%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .login_section {width: 60em;}
+}
+
+/*profiili*/
+.profile {
+    padding: 2em;
+    background-color: $maincolor; 
+    border-radius: $bRadiusBig;
+    height: auto;
+    box-shadow: $box-shadow;
+}
+
+.profile h2 {
+    margin-left: 1.5em;
+}
+
+.profile_pic {
+    display: block;
+    width: 10em;
+    height: 10em;
+    background-image: url(../kuvat/default-profile-pic.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.profile_pic img {
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+}
+
+.profile_info_area {
+    height: 80%;
+    width: 95%;
+    margin: auto;
+    padding: 2em;
+    background-color: $offwhite; 
+    border-radius: $bRadiusBig;
+    box-shadow: $box-shadow;
+}
+
+.profile_info_area form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.profile_info {
+    margin: 1em 0;
+    padding: 1em 0;
+    border-top: 1px solid;
+    word-wrap: break-word;
+}
+
+.profile_info .profile_button_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.profile_info button {
+    @include loginButton;
+    background-color: $darkgreen; 
+}
+.profile_info button:hover {
+    @include greenButtonHover;
+}
+.profile_info button:active {
+    @include greenButtonActive;
+}
+
+.profile_info label {
+    font-weight: bold;
+}
+
+.profile_addr {
+    display: flex;
+    flex-direction: row;
+}
+
+@media only screen and (min-width: 575px) {
+    .profile_info div {
+        display: inline-block;
+        margin: 0 0.7rem;
+    }
+
+    .profile_pic {
+        margin-left: 60%;
+    }
+}
+
+@media only screen and (min-width: 750px) {
+    .profile_pic {
+        margin-left: 50%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .profile_pic {
+        margin-left: 70%;
+    }
+}
