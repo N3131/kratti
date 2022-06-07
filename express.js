@@ -2,11 +2,11 @@ const mysql = require("mysql2");
 const express = require("express");
 
 const connection = mysql.createPool({
-    host: "kutugang-grandcluster-do-user-8991619-0.b.db.ondigitalocean.com",
+    host: "",
     port: 25060,
-    user: "doadmin",
-    password: "b6mvy7tgoh8p0uqi",
-    database: "defaultdb",
+    user: "",
+    password: "",
+    database: "",
   });
 
 const app = express();
@@ -15,16 +15,6 @@ var cors = require("cors");
 const bcrypt = require('bcrypt');
 app.use(express.json());
 app.use(cors());
-//
-/*  app.get("/Tuote", function(req,res) {
-      connection.getConnection(function(err,connection) {
-        connection.query("SELECT * FROM Tuote", function(error, results, fields) {
-            if (error) throw error;
-            res.send(results);
-        });
-    });
-  }
-  );*/
   //hae käyttäjän tiedot
   app.post('/getUser', function(req, res) {
     console.log(req.body.userId);
@@ -103,14 +93,7 @@ app.post('/registerUser', function(req, res) {
       }
         //Jos ei ole jo sähköpostilla tiliä, luodaan uusi
         if (results < 1) {
-          //luodaan KayttajaID, syntymäpäivä oikeaan muotoon?, tarkistetaan vielä salasana, puhnro kaikki yhteen jos ei ole laitettu lomakkeessa, tehdään samat tarkistukset kuin front-endin puolella
-          //
-          // phone == phone.replace(/ /g, '');
-          //TÄMÄN GENEROINTI!!!!!!!!!!!!!!!
-          // const KayttajaID = "poisto1";
-        
-          // console.log("current bdate: "+bdate);
-
+          //luodaan KayttajaID, syntymäpäivä oikeaan muotoon, tarkistetaan vielä salasana, puhnro kaikki yhteen jos ei ole laitettu lomakkeessa, tehdään samat tarkistukset kuin front-endin puolella
           //salasanan hash
           bcrypt.hash(pw1, 10, (err, hash) => {
           //lisätään tietokantaan
@@ -191,20 +174,11 @@ app.post('/editUser', function(req, res) {
 
 //syötteiden tarkistus
 function checkInputs(email, lname, fname, bdate, phone, pw1, pw2) {
-  // console.log(/^([a-z0-9]{4,})$/.test('ab1')); 
-  // const emailCheck = email.includes("@");
-  // const pwCheck = false;
   checkPw(pw1, pw2);
-  // const emailPatt =  new RegExp("");
 
   const emailCheck = /([@])/.test(email);
   // const phoneCheck = /([0-9])/.test(phone);
   const pw1Check = /([A-Za-z0-9~!@#$%/><,.?-_*^+|]{6,50})/.test(pw1);
-
-  console.log("emailCheck: "+emailCheck);
-  // console.log("phoneCheck: "+phoneCheck);
-  console.log("pw1Check: "+pw1Check);
-  console.log("checkPw: "+checkPw(pw1, pw2));
   //jos syötteet oikeassa muodossa, annetaan ohjelman jatkaa
   if (emailCheck && pw1Check && checkPw(pw1, pw2)) {
     return true;
@@ -215,7 +189,6 @@ function checkInputs(email, lname, fname, bdate, phone, pw1, pw2) {
 };
 
 app.listen(3000, ()=> {
-    console.log("http://localhost:3000/Tuote");
     console.log("http://localhost:3000/login");
 })
 
