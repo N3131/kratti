@@ -2,11 +2,11 @@ const mysql = require("mysql2");
 const express = require("express");
 
 const connection = mysql.createPool({
-    host: "kutugang-grandcluster-do-user-8991619-0.b.db.ondigitalocean.com",
+    host: "",
     port: 25060,
-    user: "doadmin",
-    password: "b6mvy7tgoh8p0uqi",
-    database: "defaultdb",
+    user: "",
+    password: "",
+    database: "",
   });
 
 const app = express();
